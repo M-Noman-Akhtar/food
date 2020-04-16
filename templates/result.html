@@ -1,0 +1,33 @@
+{% load static %}
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/result.css' %}">
+    <title>Result</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
+</head>
+<body id="bg" style="background-image: url('{% static "images/bgcover.png" %}')";>
+
+{% block content %}
+
+<div id="welcome">
+<div class="sign">
+Hi<span class="flicker">&nbsp{{cal.name}}!!!</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYour Calorie Level is:<span class="fast-flicker">{{cal.c}}</span>
+</div>
+</div>
+
+<div class="list">
+Aim: {{cal.aim}}
+    <br>
+Name: {{cal.name}} <br>
+Calorie:{{cal.c}}
+</div>
+
+
+{% endblock %}
+
+</body>
+</html>

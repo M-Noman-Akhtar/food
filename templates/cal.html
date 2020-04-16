@@ -1,0 +1,337 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/cal.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+    <title>Calorie form</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
+</head>
+<body id="bg" style="background-image: url('{% static "images/bgcover.png" %}')";>
+
+<div class="main">
+
+
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form" action="result">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="name" class="required">Enter Your Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Noman"/>
+                                </div>
+
+                                <div class="form-radio">
+                                    <div class="label-flex">
+                                        <label>Aim for Weight</label>
+                                    </div>
+                                    <div class="form-radio-group">
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="aim" id="lose" value="lose">
+                                            <label for="lose">Lose</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="aim" id="maintain" value="maintain" checked>
+                                            <label for="maintain">Maintain</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="aim" id="gain" value="gain">
+                                            <label for="gain">Gain</label>
+                                            <span class="check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+<!--                                <div class="form-select">-->
+<!--                                    <div class="label-flex">-->
+<!--                                        <label for="activity_level" class="required">tell  activity  level</label>-->
+<!--                                    </div>-->
+<!--                                    <div class="select-list">-->
+<!--                                            <select id="activity_level" name="activity_level"">-->
+<!--                                              <option value="volvo">Volvo</option>-->
+<!--                                              <option value="saab">Saab</option>-->
+<!--                                              <option value="mercedes">Mercedes</option>-->
+<!--                                              <option value="audi">Audi</option>-->
+<!--                                            </select>-->
+<!--&lt;!&ndash;                                        <select name="activity_level" id="activity_level">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <option value="little">No Exercise</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <option value="light">1-3 days/week</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <option value="medium">3-5 days/week</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <option value="hard">6-7 days/week</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <option value="Intense">Twice a day</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </select>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+                                <div class="form-input">
+                                    <label for="food" class="required">Enter desire food</label>
+                                    <input type="text" name="food" id="food" placeholder="Chicken" />
+                                </div>
+
+
+
+                                <div class="form-input">
+                                    <label for="age" class="required">Enter Your age</label>
+                                    <input type="text" name="age" id="age" placeholder=" Years ( 24 )" />
+                                </div>
+
+
+
+                                <div class="form-radio">
+                                    <div class="label-flex">
+                                        <label>TELL ACTIVITY LEVEL</label>
+                                    </div>
+                                    <div class="form-radio-group">
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="activity_level" id="little" value="little">
+                                            <label for="little">Little</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="activity_level" id="light" value="light">
+                                            <label for="light">Light</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="activity_level" id="medium" value="medium" checked>
+                                            <label for="medium">Medium</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="activity_level" id="hard" value="hard">
+                                            <label for="hard">Hard</label>
+                                            <span class="check"></span>
+                                        </div>
+
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="activity_level" id="intense" value="intense">
+                                            <label for="intense">Intense</label>
+                                            <span class="check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="weight" class="required">Enter your weight</label>
+                                    <input type="text" name="weight" id="weight" placeholder="KGs ( 60 )" />
+                                </div>
+
+
+                                <div class="form-radio">
+                                    <div class="label-flex">
+                                        <label>Select your Gender</label>
+                                    </div>
+                                    <div class="form-radio-group">
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="gender" id="male" value="male" checked>
+                                            <label for="male">Male</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-radio-item">
+                                            <input type="radio" name="gender" id="female" value="female">
+                                            <label for="female">Female</label>
+                                            <span class="check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-input">
+                                    <label class="required">Enter your height</label>
+                                    <input type="text" name="feet" id="feet" placeholder='Feet  ( 5" )' />
+                                </div>
+
+
+                                <div class="form-input">
+                                    <label>&nbsp;&nbsp;</label>
+                                    <input type="text" name="inches" id="inches" placeholder="Inches ( 10' )" />
+                                </div>
+
+                                <div class="form-submit">
+                            <button type="submit" value="Submit" class="submit" id="submit" name="submit">SUBMIT</button>
+                            <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
+                        </div>
+
+
+
+
+
+                                </div>
+                        </div>
+
+
+<!--                        <div class="form-row">-->
+<!--                            <div class="form-group">-->
+<!--                                <div class="form-input">-->
+<!--                                    <label for="name" class="required">Enter Your Name</label>-->
+<!--                                    <input type="text" name="name" id="name" placeholder="Noman"/>-->
+<!--                                </div>-->
+
+<!--&lt;!&ndash;                                <div class="form-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="label-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="aim">Aim for Weight</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="form-radio-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="aim" id="lose">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="lose">Lose</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="aim" id="maintain" checked>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="maintain">Maintain</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="aim" id="gain">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="gain">Gain</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div class="form-select">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="label-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="activity_level" class="required">tell  activity  level</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="select-list">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <select id="activity_level" name="activity_level"">&ndash;&gt;-->
+<!--&lt;!&ndash;                                              <option value="volvo">Volvo</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                              <option value="saab">Saab</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                              <option value="mercedes">Mercedes</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                              <option value="audi">Audi</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <select name="activity_level" id="activity_level">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <option value="little">No Exercise</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <option value="light">1-3 days/week</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <option value="medium">3-5 days/week</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <option value="hard">6-7 days/week</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <option value="Intense">Twice a day</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        </select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+
+<!--                                <div class="form-input">-->
+<!--                                    <label for="food" class="required">Enter desire food</label>-->
+<!--                                    <input type="text" name="food" id="food" placeholder="Chicken" />-->
+<!--                                </div>-->
+
+
+
+<!--                                <div class="form-input">-->
+<!--                                    <label for="age" class="required">Enter Your age</label>-->
+<!--                                    <input type="text" name="age" id="age" placeholder=" Years ( 24 )" />-->
+<!--                                </div>-->
+
+
+
+<!--&lt;!&ndash;                                <div class="form-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="label-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="activity_level">TELL ACTIVITY LEVEL</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="form-radio-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="activity_level" id="lose">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="lose">Little</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="activity_level" id="gain">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="gain">Light</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="activity_level" id="maintain" checked>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="maintain">Medium</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="activity_level" id="gain">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="gain">Hard</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="activity_level" id="gain">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="gain">Intense</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <div class="form-input">-->
+<!--                                    <label for="weight" class="required">Enter your weight</label>-->
+<!--                                    <input type="text" name="weight" id="weight" placeholder="KGs ( 60 )" />-->
+<!--                                </div>-->
+
+
+<!--&lt;!&ndash;                                <div class="form-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="label-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="gender">Select your Gender</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="form-radio-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="gender" id="male" checked>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="male">Male</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="form-radio-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="radio" name="gender" id="female">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <label for="female">Female</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <span class="check"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--                                <div class="form-input">-->
+<!--                                    <label class="required">Enter your height</label>-->
+<!--                                    <input type="text" name="feet" id="feet" placeholder='Feet  ( 5" )' />-->
+<!--                                </div>-->
+
+
+<!--                                <div class="form-input">-->
+<!--                                    <label>&nbsp;&nbsp;</label>-->
+<!--                                    <input type="text" name="inches" id="inches" placeholder="Inches ( 10' )" />-->
+<!--                                </div>-->
+
+<!--                                <div class="form-submit">-->
+<!--                            <button type="submit" value="Submit" class="submit" id="submit" name="submit">SUBMIT</button>-->
+<!--                            <input type="submit" value="Reset" class="submit" id="reset" name="reset" />-->
+<!--                        </div>-->
+
+<!--                                </div>-->
+<!--                        </div>-->
+
+
+                    </form>
+                </div>
+
+
+
+    </div>
+<!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'vendor/wnumb/wNumb.js' %}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

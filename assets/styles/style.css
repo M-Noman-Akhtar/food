@@ -1,0 +1,310 @@
+{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Clip;
+  src: url("https://acupoftee.github.io/fonts/Clip.ttf");
+}
+
+.sign {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  left: 50%;
+  top: 50%;
+  font-family: "Clip";
+  text-transform: uppercase;
+  font-size: 6em;
+  color: #008e3d;
+  text-shadow: 0 0 0.6rem #008e3d, 0 0 1.5rem #008e3d,
+    -0.2rem 0.1rem 1rem #008e3d, 0.2rem 0.1rem 1rem #008e3d,
+    0 -0.5rem 2rem #008e3d, 0 0.5rem 3rem #008e3d;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #008e3d;
+    text-shadow: 0 0 0.6rem #008e3d, 0 0 1.5rem #008e3d,
+      -0.2rem 0.1rem 1rem #008e3d, 0.2rem 0.1rem 1rem #008e3d,
+      0 -0.5rem 2rem #008e3d, 0 0.5rem 3rem #008e3d;
+  }
+  28%,
+  33% {
+    color: #008e3d;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #008e3d;
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #008e3d;
+    text-shadow: 0 0 0.6rem #008e3d, 0 0 1.5rem #008e3d,
+      -0.2rem 0.1rem 1rem #008e3d, 0.2rem 0.1rem 1rem #008e3d,
+      0 -0.5rem 2rem #008e3d, 0 0.5rem 3rem #008e3d;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+body {
+  margin: 0;
+  font-family:  Arial;
+  font-size: 17px;
+}
+
+.video {
+    position: relative;
+}
+
+#myVideo {
+  position: relative;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.welcome{
+    position: absolute;
+    min-width: 100%;
+    text-align: center;
+    background: white;
+    height: 114px;
+}
+
+.footer {
+
+    bottom: 0;
+    position: absolute;
+    min-width: 100%;
+    text-align: center;
+    background: black;
+    height: 56px;
+    z-index: 1;
+
+}
+
+.footer h1,a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 0 0 0;
+}
+
+
+.content {
+  position: absolute;
+  top: 38%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+    position: absolute;
+    left: 42%;
+    border: none;
+    background: none;
+    border-radius: 50%;
+}
+
+button:focus { outline: none; }
+
+.shiny img {
+     width:200px;
+     height:200px;
+}
+
+
+.hover14 figure {
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+}
+.hover14 figure::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	border-radius: 50%;
+	display: circle;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.5) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.5) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.hover14 figure:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+	border-radius: 50%;
+	display: circle;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	50%{
+		left: 125%;
+	}
+}
