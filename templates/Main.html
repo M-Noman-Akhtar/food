@@ -1,0 +1,41 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/cal.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+    <title>Calorie form</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
+</head>
+<body id="bg" style="background-image: url('{% static "images/bgcover.png" %}')";>
+
+<div class="main">
+<div class="row">
+<div class="form-submit">
+<form action="Calculate_Calorie" method="post">
+                {% csrf_token %}
+    <button type="submit" value="submit" class="submit" id="reset" name="calorie">1. Find Calories</button>
+    <button type="submit" value="load" class="submit" id="reset" name="load">2. Load Data</button>
+    <button type="submit" value="processing" class="submit" id="reset" name="processing">3.PreProcessing</button>
+    <button type="submit" value="classification" class="submit" id="reset" name="classification">4.Classification</button>
+
+</form>
+</div>
+</div>
+
+<marquee  direction="up" scrollamount="8" height="480px" style="font-size:72px;">Let's start Sentiment Analysis Step by Step...</marquee>
+
+
+    </div>
+<!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'vendor/wnumb/wNumb.js' %}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

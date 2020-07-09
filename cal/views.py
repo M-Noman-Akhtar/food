@@ -1,14 +1,46 @@
 from django.shortcuts import render
 from .models import Calorie
+import csv
+from textblob import TextBlob
 import math
 from django.http import HttpResponse
+import psycopg2 as pg2
+import numpy as np
+import pandas as pd
 # Create your views here.
 
 def home(request):
     return render(request, 'home.html');
 
-def calorie(request):
-    return render(request, 'cal.html');
+def Main(request):
+    return render(request, 'Main.html');
+
+def Calculate_Calorie(request):
+    return render(request, 'Calculate_Calorie.html');
+
+def load(request):
+    data = Calorie()
+    connect = pg2.connect(database='food',user= 'postgres',password= '0786')
+    cursor = connect.cursor()
+    cursor.execute('SELECT * FROM public.raw_interactions LIMIT 100')
+    res=cursor.fetchall()
+    for line in res:
+        data.list = line[4]
+
+    return render(request, "load.html",{'data':data});
+
+def processing(request):
+    pre = Calorie()
+
+    connect = pg2.connect(database='food', user='postgres', password='0786')
+    cursor = connect.cursor()
+    cursor.execute('SELECT * FROM public.raw_interactions LIMIT 100')
+    res = cursor.fetchall()
+    for line in res:
+        line = line[4]
+        preprocecing = TextBlob(line)
+        pre.pre = preprocecing.sentiment
+    return render(request, "processing.html",{'pre':pre});
 
 def result(request):
 
@@ -57,5 +89,8 @@ def result(request):
 
     # if (cal.aim == 'lose'):
     #     select * from table where
+
+
+
 
     return render(request, "result.html",{'cal':cal});

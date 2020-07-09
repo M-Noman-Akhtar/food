@@ -14,7 +14,7 @@
 <div class="main">
 <div class="row">
 <div class="form-submit">
-<form action="load" method="post">
+<form action="processing" method="post">
                 {% csrf_token %}
     <button type="submit" value="submit" class="submit" id="reset" name="calorie">1. Find Calories</button>
     <button type="submit" value="load" class="submit" id="reset" name="load">2. Load Data</button>
@@ -25,15 +25,9 @@
 </div>
 </div>
 {% block content %}
-<marquee  direction="up" scrollamount="8" height="480px" style="font-size:72px;">
-<div id="welcome">
-<div class="sign">
-Hi<span class="flicker">&nbsp{{cal.name}}!!!</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYour Calorie Level is:<span class="fast-flicker">{{cal.c}}</span>
-</div>
-</div>
-</marquee>
-
-
+    <div id="review">
+    <h1>{{pre.pre}}</h1>
+    </div>
 
 {% endblock %}
 

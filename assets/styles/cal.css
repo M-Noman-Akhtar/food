@@ -383,6 +383,43 @@ li.init {
   #submit:hover {
   background-color: #267747; }
 
+#calorie {
+  background: #fff;
+  color: #999;
+  border: 2px solid #ebebeb; }
+  #calorie:hover {
+    border: 2px solid #329e5e;
+    background: #329e5e;
+    color: #fff; }
+
+#load {
+  background: #fff;
+  color: #999;
+  border: 2px solid #ebebeb; }
+  #load:hover {
+    border: 2px solid #329e5e;
+    background: #329e5e;
+    color: #fff; }
+
+#processing {
+  background: #fff;
+  color: #999;
+  border: 2px solid #ebebeb; }
+  #processing:hover {
+    border: 2px solid #329e5e;
+    background: #329e5e;
+    color: #fff; }
+
+#classification {
+  background: #fff;
+  color: #999;
+  border: 2px solid #ebebeb; }
+  #classification:hover {
+    border: 2px solid #329e5e;
+    background: #329e5e;
+    color: #fff; }
+
+
 .form-input {
   position: relative; }
 

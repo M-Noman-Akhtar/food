@@ -193,14 +193,16 @@
 #welcome{
     position: absolute;
     min-width: 100%;
-    top: 0;
-    background: white;
+    padding-top: 7px;
     height: 48px;
     font-size: 42px;
 }
 
 .list {
   position: absolute;
-  background: rgba(255, 255, 255, 0.9);
-  top: 50px;
+}
+
+#review {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
 }

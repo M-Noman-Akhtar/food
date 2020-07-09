@@ -12,3 +12,5 @@ class Calorie(models.Model):
     inches = models.FloatField()
     c = models.FloatField()
     height = models.FloatField()
+    list = models.CharField(max_length=500)
+    pre = models.CharField(max_length=1000)
