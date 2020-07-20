@@ -7,6 +7,7 @@ from django.http import HttpResponse
 import psycopg2 as pg2
 import numpy as np
 import pandas as pd
+from tabulate import tabulate
 # Create your views here.
 
 def home(request):
@@ -19,19 +20,28 @@ def Calculate_Calorie(request):
     return render(request, 'Calculate_Calorie.html');
 
 def load(request):
-    data = Calorie()
-    connect = pg2.connect(database='food',user= 'postgres',password= '0786')
-    cursor = connect.cursor()
-    cursor.execute('SELECT * FROM public.raw_interactions LIMIT 100')
-    res=cursor.fetchall()
-    for line in res:
-        data.list = line[4]
 
+    # connect = pg2.connect(database='food',user= 'postgres',password= '0786')
+    # cursor = connect.cursor()
+    # cursor.execute('SELECT * FROM public.raw_interactions LIMIT 100')
+    # res=cursor.fetchall()
+    # for line in res:
+    #     data.list = line[4]
+
+    data = Calorie()
+    connect = pg2.connect(database='food', user='postgres', password='0786')
+    query = 'SELECT * FROM public.raw_recipe LIMIT 100'
+    df = pd.read_sql(query, con=connect)
+    df = pd.DataFrame(df, columns=['id', 'name'])
+    df = df.head(10)
+    df = df.to_numpy()
+    headers = ["id", "name"]
+    table = tabulate(df, headers, tablefmt="fancy_grid")
+    data.list = table
     return render(request, "load.html",{'data':data});
 
 def processing(request):
     pre = Calorie()
-
     connect = pg2.connect(database='food', user='postgres', password='0786')
     cursor = connect.cursor()
     cursor.execute('SELECT * FROM public.raw_interactions LIMIT 100')
@@ -40,11 +50,23 @@ def processing(request):
         line = line[4]
         preprocecing = TextBlob(line)
         pre.pre = preprocecing.sentiment
+
+    # connect = pg2.connect(database='food', user='postgres', password='0786')
+    # query = 'SELECT * FROM public.raw_interactions LIMIT 100'
+    # df = pd.read_sql(query, con=connect)
+    # df = pd.DataFrame(df, columns=['review'])
+    # df = df.head(10)
+    # df = df.to_numpy()
+    # headers = ["review"]
+    # table = tabulate(df, headers, tablefmt="simple")
+    # preprocecing = TextBlob(table)
+    # pre.pre = preprocecing.sentiment
+
     return render(request, "processing.html",{'pre':pre});
 
 def result(request):
 
-    cal= Calorie()
+    cal = Calorie()
     cal.name = str(request.POST['name'])
     cal.activity_level = str(request.POST['activity_level'])
     cal.weight = int(request.POST['weight'])
@@ -55,7 +77,7 @@ def result(request):
     cal.feet = float(request.POST['feet'])
     cal.inches = float(request.POST['inches'])
 
-    cal.height= (cal.feet*30.48) + (cal.inches*2.54)
+    cal.height = (cal.feet*30.48) + (cal.inches*2.54)
 
 
 
