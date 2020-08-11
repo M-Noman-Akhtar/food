@@ -108,6 +108,11 @@ label, input {
   display: block;
   width: 100%; }
 
+#desire {
+    display: inline!important;
+    width: auto!important; }
+}
+
 label {
   font-weight: bold;
   text-transform: uppercase;
@@ -378,8 +383,7 @@ li.init {
 
 #submit {
   background: #329e5e;
-  color: #fff;
-  margin-right: 25px; }
+  color: #fff; }
   #submit:hover {
   background-color: #267747; }
 

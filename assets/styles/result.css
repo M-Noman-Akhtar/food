@@ -206,3 +206,14 @@
     position: absolute;
     background: rgba(255, 255, 255, 0.9);
 }
+
+#sentreview {
+    margin-left: 20%;
+    margin-right: 20%;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#recid {
+    display: inline!important;
+    width: auto!important; }
+}

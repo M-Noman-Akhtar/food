@@ -8,5 +8,7 @@ urlpatterns = [
     path('Calculate_Calorie', views.Calculate_Calorie, name='Calculate_Calorie'),
     path('load', views.load, name='load'),
     path('processing', views.processing, name='processing'),
+    path('sentiment', views.sentiment, name='sentiment'),
+    path('show', views.show, name='show'),
     path('result', views.result, name='result')
 ]

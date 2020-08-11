@@ -17,17 +17,16 @@
 <div class="form-submit">
 <form action="Calculate_Calorie" method="post">
                 {% csrf_token %}
-    <button type="submit" value="submit" class="submit" id="reset" name="calorie">1. Find Calories</button>
+    <button type="submit" value="submit" class="submit" id="submit" name="calorie">1. Find Calories</button>
     <button type="submit" value="load" class="submit" id="reset" name="load">2. Load Data</button>
-    <button type="submit" value="processing" class="submit" id="reset" name="processing">3.PreProcessing</button>
-    <button type="submit" value="classification" class="submit" id="reset" name="classification">4.Classification</button>
+    <button type="submit" value="sentiment" class="submit" id="reset" name="sentiment">3. Analysis</button>
+    <button type="submit" value="show" class="submit" id="reset" name="show">4. Show result</button>
 
 </form>
 </div>
 </div>
 
 <marquee  direction="up" scrollamount="8" height="480px" style="font-size:72px;">Let's start Sentiment Analysis Step by Step...</marquee>
-
 
     </div>
 <!-- JS -->

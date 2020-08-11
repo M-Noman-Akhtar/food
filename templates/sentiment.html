@@ -9,29 +9,23 @@
     <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
 </head>
 <body id="bg" style="background-image: url('{% static "images/bgcover.png" %}')";>
+
 <div class="row">
 <div class="form-submit">
-<form action="processing" method="post">
+<form action="show" method="post">
                 {% csrf_token %}
     <button type="submit" value="submit" class="submit" id="reset" name="calorie">1. Find Calories</button>
     <button type="submit" value="load" class="submit" id="reset" name="load">2. Load Data</button>
     <button type="submit" value="sentiment" class="submit" id="reset" name="sentiment">3. Analysis</button>
-    <button type="submit" value="show" class="submit" id="reset" name="show">4. Show result</button>
+    <button type="submit" value="show" class="submit" id="submit" name="show">4. Show result</button>
 
-    <div class="row">
-        <div class="md-col-12">
-    <label for="desire" class="required">Enter Your Desire Recipe Id:</label>
-    <input type="text" name="desire" id="desire" placeholder="12345" />
-        <button type="submit" value="processing" class="submit" id="submit" name="processing">Submit</button>
-    </div></div>
 </form>
 </div>
 </div>
 {% block content %}
-
     <div id="review">
-
-    <h1>{{data.list}}</h1><br>
+    <h1>{{sent.sent}}</h1><br>
+        <h1>Reviews are Classified as:{{sent.pre}}</h1>
     </div>
 
 {% endblock %}
