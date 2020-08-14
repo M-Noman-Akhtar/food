@@ -12,12 +12,20 @@
 
 <div class="row">
 <div class="form-submit">
+    <div id="progress-wrapper">
 <form action="show" method="post">
                 {% csrf_token %}
     <button type="submit" value="submit" class="submit" id="reset" name="calorie">1. Find Calories</button>
     <button type="submit" value="load" class="submit" id="reset" name="load">2. Load Data</button>
     <button type="submit" value="sentiment" class="submit" id="reset" name="sentiment">3. Analysis</button>
-    <button type="submit" value="show" class="submit" id="submit" name="show">4. Show result</button>
+    <button type="submit" value="show" class="submit" id="progress-bar-trigger" name="show">4. Show result</button>
+<br><br>
+<!--  <button id="progress-bar-trigger">Run</button>-->
+
+  <div id="progress-bar" style="background-color: green; width: 0%;">&nbsp;</div>
+  <div id="progress-bar-message" style="background-color: white;font-size: 24px;font-weight: 800;"></div>
+
+</div>
 
 </form>
 </div>
@@ -25,10 +33,30 @@
 {% block content %}
     <div id="review">
     <h1>{{sent.sent}}</h1><br>
-        <h1>Reviews are Classified as:{{sent.pre}}</h1>
+        <h1>Reviews are Classified as: {{sent.pre}}</h1><br>
+        <h1>Accuracy is: {{sent.percent}}%</h1><br>
     </div>
 
 {% endblock %}
+<script>
+    function updateProgress(progressBarElement, progressBarMessageElement, progress) {
+  progressBarElement.style.width = progress.percent + "%";
+  progressBarMessageElement.innerHTML = progress.current + ' of ' + progress.total + ' Loading...';
+}
+
+var trigger = document.getElementById('progress-bar-trigger');
+trigger.addEventListener('click', function(e) {
+  var bar = document.getElementById("progress-bar");
+  var barMessage = document.getElementById("progress-bar-message");
+  for (var i = 0; i < 50; i++) {
+    setTimeout(updateProgress, 500 * i, bar, barMessage, {
+      percent: 2 * i,
+      current: 2 * i,
+      total: 100
+    })
+  }
+})
+</script>
 
 </body>
 </html>

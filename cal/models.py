@@ -13,6 +13,7 @@ class Calorie(models.Model):
     c = models.FloatField()
     height = models.FloatField()
     desire = models.IntegerField()
+    percent = models.FloatField()
     list = models.CharField(max_length=25000)
     pre = models.CharField(max_length=10000)
     sent = models.CharField(max_length=10000)
